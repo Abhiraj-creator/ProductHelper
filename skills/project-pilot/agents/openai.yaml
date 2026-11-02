@@ -1,0 +1,4 @@
+interface:
+  display_name: "ProjectPilot"
+  short_description: "Evidence-based project planning and architecture advice"
+  default_prompt: "Use $project-pilot to assess this project and recommend the most practical next steps."
