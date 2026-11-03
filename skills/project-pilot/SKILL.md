@@ -130,6 +130,10 @@ Judge readiness against the project's intended users, data, traffic, team, and d
 
 For a post-build review, lead with prioritized findings and inspection limits, then state what to keep, harden, simplify, and defer. A review is not a certification, penetration test, compliance attestation, or guarantee of production safety.
 
+## Templates
+
+Use templates only when the user asks for files or the project's complexity justifies a separate document. Do not generate the full set by default. Available output templates are in [assets/templates](assets/templates/): PRD, architecture, database schema, API design, development roadmap, task breakdown, testing strategy, risks, and architecture decisions. Adapt or omit sections when they do not apply; never fill gaps with invented facts.
+
 ## Recommendation contract
 
 Use the shortest structure that answers the request.
