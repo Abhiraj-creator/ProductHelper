@@ -14,7 +14,7 @@ ProjectPilot is a portable Markdown-based Agent Skill for evidence-based project
 Copy `skills/project-pilot/` to either:
 
 - `.agents/skills/project-pilot/` in a project
-- `$USERPROFILE/.agents/skills/project-pilot/` for user-wide use
+- `~/.codex/skills/project-pilot/` for user-wide use
 
 Then invoke it with:
 
@@ -25,6 +25,10 @@ $project-pilot Review my project before launch.
 ## Install for Claude Code
 
 Copy the same skill folder into the project's `.claude/skills/project-pilot/` or the user's Claude skills directory.
+
+## CLI installer (Milestone 2)
+
+From `packages/cli`, run `npm install`, then `npm run build`. The packaged command supports interactive installation or non-interactive forms such as `projectpilot install --agent codex --global`; it also provides `update`, `uninstall`, and `info --json`.
 
 ## Examples and tests
 
