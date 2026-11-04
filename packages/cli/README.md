@@ -1,14 +1,14 @@
-# product-helper CLI
+# Product Helper CLI
 
 After publishing the package to npm, install the product-helper skill for Codex or Claude Code:
 
 ```sh
-npx product-helper install
-npx product-helper install --agent codex --global
-npx product-helper install --agent claude --local
-npx product-helper update --all
-npx product-helper uninstall --agent codex --yes
-npx product-helper info --json
+npx product-helper-cli install
+npx product-helper-cli install --agent codex --global
+npx product-helper-cli install --agent claude --local
+npx product-helper-cli update --all
+npx product-helper-cli uninstall --agent codex --yes
+npx product-helper-cli info --json
 ```
 
 `update`, `uninstall`, and `info --json` manage only directories containing product-helper metadata. `uninstall` always asks before removal; use `--yes` only for non-interactive automation.
@@ -27,7 +27,7 @@ Project-level installation is relative to the directory where the command is run
 - **Release cannot be downloaded:** check network access and confirm the configured release tag exists. The default is the immutable `v0.1.2` tag; `PRODUCT_HELPER_REPOSITORY` can override it with another immutable `#vMAJOR.MINOR.PATCH` source.
 - **Permission denied:** choose a project-level install or run the global install from a terminal with permission to write the agent’s home directory.
 - **Installation already exists:** use `update`, or rerun `install` and confirm replacement. Unmanaged directories are never overwritten.
-- **Agent does not see the skill:** restart or refresh the agent after installation and verify the exact path with `product-helper info`.
+- **Agent does not see the skill:** restart or refresh the agent after installation and verify the exact path with `product-helper-cli info`.
 - **Uninstall in automation:** pass `--yes`; without it, the CLI requires explicit confirmation.
 
 The release source defaults to the product-helper repository's immutable `v0.1.2` tag. Maintainers may override it with `PRODUCT_HELPER_REPOSITORY`, but it must be an immutable `#vMAJOR.MINOR.PATCH` Giget source.

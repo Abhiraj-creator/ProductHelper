@@ -30,18 +30,18 @@ $product-helper Review my project before launch.
 Once the package is published to npm, the Milestone 2 CLI installs and manages the same canonical skill for both supported agents:
 
 ```sh
-npx product-helper install
-npx product-helper install --agent codex --global
-npx product-helper install --agent claude --local
+npx product-helper-cli install
+npx product-helper-cli install --agent codex --global
+npx product-helper-cli install --agent claude --local
 ```
 
 Manage an existing installation:
 
 ```sh
-npx product-helper update --all
-npx product-helper info
-npx product-helper info --json
-npx product-helper uninstall --agent codex
+npx product-helper-cli update --all
+npx product-helper-cli info
+npx product-helper-cli info --json
+npx product-helper-cli uninstall --agent codex
 ```
 
 | Agent | Global | Project-level |

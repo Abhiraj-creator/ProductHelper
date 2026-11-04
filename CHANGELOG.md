@@ -2,7 +2,7 @@
 
 ## 0.1.2 — 2026-11-04
 
-- Renamed the product, skill, CLI, and npm package to Product Helper.
+- Renamed the product and skill to Product Helper; the npm package and CLI command are `product-helper-cli`.
 - Moved the installed skill path to `product-helper`.
 
 ## 0.1.1 — 2026-11-04

@@ -355,7 +355,7 @@ async function info(json: boolean) {
 }
 
 const program = new Command()
-  .name("product-helper")
+  .name("product-helper-cli")
   .description("Install and manage the Product Helper agent skill.")
   .version("0.1.2");
 program
