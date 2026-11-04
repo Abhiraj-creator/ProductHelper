@@ -1,39 +1,86 @@
 # ProjectPilot
 
-ProjectPilot is a portable Markdown-based Agent Skill for evidence-based project planning, architecture decisions, repository improvement, and production-readiness review.
+ProjectPilot is a portable Agent Skill for evidence-based project planning, architecture decisions, repository improvement, and production-readiness review. It works with Codex and Claude Code without a backend, database, account, or separate AI runtime.
 
-## Workflows
+[![CLI CI](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml/badge.svg)](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml)
 
-- **Pre-build:** turn a project idea into a feasible scope, stack direction, architecture outline, and roadmap.
+## What it helps with
+
+- **Pre-build:** turn an idea into a feasible scope, stack direction, architecture outline, and roadmap.
 - **Mid-build:** inspect an existing repository and recommend the smallest justified changes.
 - **Post-build:** review launch readiness with prioritized, file-grounded findings.
-- **Decision:** compare a technology, vendor, or architecture narrowly against real constraints.
+- **Decision:** compare a technology, vendor, or architecture against real constraints.
 
-## Install for Codex
+The skill is read-only by design: it advises and documents decisions, while the host agent remains responsible for execution and authorization.
 
-Copy `skills/project-pilot/` to either:
+## Install the skill manually
 
-- `.agents/skills/project-pilot/` in a project
-- `~/.codex/skills/project-pilot/` for user-wide use
+For Codex, copy `skills/project-pilot/` to `.agents/skills/project-pilot/` for one project or `~/.codex/skills/project-pilot/` for user-wide use.
 
-Then invoke it with:
+For Claude Code, copy the same folder to `.claude/skills/project-pilot/` for one project or `~/.claude/skills/project-pilot/` for user-wide use.
+
+Then invoke it from the agent:
 
 ```text
 $project-pilot Review my project before launch.
 ```
 
-## Install for Claude Code
+## Install with the CLI
 
-Copy the same skill folder into the project's `.claude/skills/project-pilot/` or the user's Claude skills directory.
+Once the package is published to npm, the Milestone 2 CLI installs and manages the same canonical skill for both supported agents:
 
-## CLI installer (Milestone 2)
+```sh
+npx projectpilot install
+npx projectpilot install --agent codex --global
+npx projectpilot install --agent claude --local
+```
 
-From `packages/cli`, run `npm install`, then `npm run build`. The packaged command supports interactive installation or non-interactive forms such as `projectpilot install --agent codex --global`; it also provides `update`, `uninstall`, and `info --json`.
+Manage an existing installation:
 
-See the [CLI guide](packages/cli/README.md), [installation example](examples/cli-install.md), and [troubleshooting section](packages/cli/README.md#troubleshooting) for paths, release behavior, and common failures.
+```sh
+npx projectpilot update --all
+npx projectpilot info
+npx projectpilot info --json
+npx projectpilot uninstall --agent codex
+```
 
-## Examples and tests
+| Agent | Global | Project-level |
+| --- | --- | --- |
+| Codex | `~/.codex/skills/project-pilot/` | `.agents/skills/project-pilot/` |
+| Claude Code | `~/.claude/skills/project-pilot/` | `.claude/skills/project-pilot/` |
 
+The CLI downloads an immutable GitHub release, validates `SKILL.md` and local references, stages changes before replacing files, records ownership metadata, preserves unrelated files, and removes only files it manages.
+
+The current CLI release is `0.1.1`, distributed from the repository’s `v0.1.1` tag. See the [CLI guide](packages/cli/README.md) for troubleshooting and release-source details.
+
+## Develop the CLI locally
+
+```sh
+cd packages/cli
+npm install
+npm run check
+npm test
+npm run build
+node dist/index.js --help
+```
+
+The CLI package is separate from the skill source. Changes to `packages/cli` must not duplicate or modify `skills/project-pilot`.
+
+## Repository map
+
+```text
+skills/project-pilot/       canonical portable skill
+packages/cli/               TypeScript installer and manager
+examples/                   user-facing workflow examples
+tests/                      skill behavior and compatibility tests
+evals/                      evaluation cases and rubric
+```
+
+## Documentation
+
+- [CLI guide and troubleshooting](packages/cli/README.md)
+- [CLI installation example](examples/cli-install.md)
+- [Changelog](CHANGELOG.md)
 - [Pre-build example](examples/pre-build-example.md)
 - [Mid-build example](examples/mid-build-caching-example.md)
 - [Post-build example](examples/post-build-review-example.md)
@@ -42,8 +89,7 @@ See the [CLI guide](packages/cli/README.md), [installation example](examples/cli
 - [Evaluation rubric](evals/evaluation-rubric.md)
 - [Portability checklist](evals/portability.md)
 - [Milestone 1 status](MILESTONE1_STATUS.md)
-- [CLI changelog](CHANGELOG.md)
 
 ## Limitations
 
-ProjectPilot provides advice; it does not guarantee correctness, certify security or compliance, install dependencies, deploy applications, or modify source code without separate authorization. Research, pricing, repository access, and runtime behavior depend on the host's available capabilities.
+ProjectPilot provides advice; it does not guarantee correctness, certify security or compliance, install dependencies, deploy applications, or modify source code without separate authorization. Research, pricing, repository access, and runtime behavior depend on the host agent’s available capabilities.
