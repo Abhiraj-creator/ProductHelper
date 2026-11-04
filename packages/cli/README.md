@@ -24,13 +24,13 @@ Project-level installation is relative to the directory where the command is run
 
 ## Troubleshooting
 
-- **Release cannot be downloaded:** check network access and confirm the configured release tag exists. The default is the immutable `v0.1.2` tag; `PRODUCT_HELPER_REPOSITORY` can override it with another immutable `#vMAJOR.MINOR.PATCH` source.
+- **Release cannot be downloaded:** check network access and confirm the configured release tag exists. The default is the immutable `v0.1.3` tag; `PRODUCT_HELPER_REPOSITORY` can override it with another immutable `#vMAJOR.MINOR.PATCH` source.
 - **Permission denied:** choose a project-level install or run the global install from a terminal with permission to write the agent’s home directory.
 - **Installation already exists:** use `update`, or rerun `install` and confirm replacement. Unmanaged directories are never overwritten.
 - **Agent does not see the skill:** restart or refresh the agent after installation and verify the exact path with `product-helper-cli info`.
 - **Uninstall in automation:** pass `--yes`; without it, the CLI requires explicit confirmation.
 
-The release source defaults to the product-helper repository's immutable `v0.1.2` tag. Maintainers may override it with `PRODUCT_HELPER_REPOSITORY`, but it must be an immutable `#vMAJOR.MINOR.PATCH` Giget source.
+The release source defaults to the product-helper repository's immutable `v0.1.3` tag. Maintainers may override it with `PRODUCT_HELPER_REPOSITORY`, but it must be an immutable `#vMAJOR.MINOR.PATCH` Giget source.
 
 ### Renaming from the previous package
 

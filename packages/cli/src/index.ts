@@ -45,7 +45,7 @@ const skillSchema = z.object({
 const skillDirectory = "skills/product-helper";
 const metadataFile = ".product-helper-install.json";
 const source =
-  process.env.PRODUCT_HELPER_REPOSITORY ?? "github:Abhiraj-creator/dev-helper#v0.1.2";
+  process.env.PRODUCT_HELPER_REPOSITORY ?? "github:Abhiraj-creator/dev-helper#v0.1.3";
 
 const agents: Record<AgentId, Agent> = {
   codex: {
@@ -345,7 +345,7 @@ async function info(json: boolean) {
     }
   if (json)
     console.log(
-      JSON.stringify({ cliVersion: "0.1.2", installations }, null, 2),
+      JSON.stringify({ cliVersion: "0.1.3", installations }, null, 2),
     );
   else
     for (const item of installations)
@@ -357,7 +357,7 @@ async function info(json: boolean) {
 const program = new Command()
   .name("product-helper-cli")
   .description("Install and manage the Product Helper agent skill.")
-  .version("0.1.2");
+  .version("0.1.3");
 program
   .command("install")
   .option("--agent <agent>", "codex, claude, or all")

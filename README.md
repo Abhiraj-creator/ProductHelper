@@ -51,7 +51,7 @@ npx product-helper-cli uninstall --agent codex
 
 The CLI downloads an immutable GitHub release, validates `SKILL.md` and local references, stages changes before replacing files, records ownership metadata, preserves unrelated files, and removes only files it manages.
 
-The current CLI release is `0.1.2`, distributed from the repository’s `v0.1.2` tag. See the [CLI guide](packages/cli/README.md) for troubleshooting and release-source details.
+The current CLI release is `0.1.3`, distributed from the repository’s `v0.1.3` tag. See the [CLI guide](packages/cli/README.md) for troubleshooting and release-source details.
 
 ## Develop the CLI locally
 

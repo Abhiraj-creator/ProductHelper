@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3 — 2026-11-04
+
+- Upgraded the runtime Zod dependency to remove the production audit vulnerability.
+
 ## 0.1.2 — 2026-11-04
 
 - Renamed the product and skill to Product Helper; the npm package and CLI command are `product-helper-cli`.
