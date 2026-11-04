@@ -16,6 +16,7 @@ import {
 import { homedir, tmpdir } from "node:os";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { z } from "zod";
+import { compareVersions } from "./version.js";
 
 type AgentId = "codex" | "claude";
 type Scope = "global" | "local";
@@ -290,10 +291,11 @@ async function update(options: { agent?: string; all?: boolean }) {
       for (const scope of ["global", "local"] as Scope[]) {
         const target = pathFor(agent, scope, root);
         const meta = await readMetadata(target);
-        if (meta)
+        if (meta && compareVersions(incoming.version, meta.version) > 0)
           console.log(
             `Updated ${agents[agent].name} (${scope}) from ${meta.version} to ${incoming.version}: ${await installOne(agent, scope, root, incoming, true)}`,
           );
+        else if (meta) console.log(`${agents[agent].name} (${scope}) is already at ${meta.version}.`);
       }
   } finally {
     await rm(dirname(incoming.dir), { recursive: true, force: true });
