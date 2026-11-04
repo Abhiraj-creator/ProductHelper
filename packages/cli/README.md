@@ -10,4 +10,4 @@ npx projectpilot install --agent claude --local
 
 `update`, `uninstall`, and `info --json` manage only directories containing ProjectPilot metadata. `uninstall` always asks before removal; use `--yes` only for non-interactive automation.
 
-The release source defaults to the ProjectPilot repository's immutable `v0.1.0` tag. Maintainers may override it with `PROJECTPILOT_REPOSITORY`, but it must be an immutable `#vMAJOR.MINOR.PATCH` Giget source. Publish that tag before distributing the npm package.
+The release source defaults to the ProjectPilot repository's immutable `v0.1.1` tag. Maintainers may override it with `PROJECTPILOT_REPOSITORY`, but it must be an immutable `#vMAJOR.MINOR.PATCH` Giget source. Publish that tag before distributing the npm package.

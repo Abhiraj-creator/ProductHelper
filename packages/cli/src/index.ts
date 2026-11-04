@@ -42,10 +42,10 @@ const skillSchema = z.object({
   name: z.literal("project-pilot"),
   description: z.string().min(1),
 });
-const skillDirectory = "typescript/skills/project-pilot";
+const skillDirectory = "skills/project-pilot";
 const metadataFile = ".projectpilot-install.json";
 const source =
-  process.env.PROJECTPILOT_REPOSITORY ?? "github:Abhiraj-creator/dev-helper#v0.1.0";
+  process.env.PROJECTPILOT_REPOSITORY ?? "github:Abhiraj-creator/dev-helper#v0.1.1";
 
 const agents: Record<AgentId, Agent> = {
   codex: {
@@ -136,7 +136,7 @@ async function removeEmptyDirectories(dir: string): Promise<void> {
     if (entry.isDirectory()) {
       const child = join(dir, entry.name);
       await removeEmptyDirectories(child);
-      if ((await readdir(child)).length === 0) await rm(child);
+      if ((await readdir(child)).length === 0) await rm(child, { recursive: true, force: true });
     }
 }
 async function download(): Promise<{ dir: string; version: string }> {
@@ -323,10 +323,10 @@ async function uninstall(options: {
           initialValue: false,
         }));
       if (isCancel(approved) || !approved) continue;
-      await Promise.all(metadata.managedFiles.map((file) => rm(join(target, file), { force: true })));
+      await Promise.all(metadata.managedFiles.map((file) => rm(join(target, file), { force: true, recursive: true })));
       await rm(join(target, metadataFile), { force: true });
       await removeEmptyDirectories(target);
-      if ((await readdir(target)).length === 0) await rm(target);
+      if ((await readdir(target)).length === 0) await rm(target, { recursive: true, force: true });
       console.log(`Removed ProjectPilot-managed files from ${target}.`);
     }
 }
@@ -345,7 +345,7 @@ async function info(json: boolean) {
     }
   if (json)
     console.log(
-      JSON.stringify({ cliVersion: "0.1.0", installations }, null, 2),
+      JSON.stringify({ cliVersion: "0.1.1", installations }, null, 2),
     );
   else
     for (const item of installations)
@@ -357,7 +357,7 @@ async function info(json: boolean) {
 const program = new Command()
   .name("projectpilot")
   .description("Install and manage the ProjectPilot agent skill.")
-  .version("0.1.0");
+  .version("0.1.1");
 program
   .command("install")
   .option("--agent <agent>", "codex, claude, or all")

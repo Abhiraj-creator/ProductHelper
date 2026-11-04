@@ -1,6 +1,6 @@
 {
   "name": "projectpilot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Install and manage the ProjectPilot agent skill.",
   "type": "module",
   "bin": { "projectpilot": "./dist/index.js" },
