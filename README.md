@@ -1,80 +1,198 @@
-# product-helper
+# Product Helper
 
-product-helper is a portable Agent Skill for evidence-based project planning, architecture decisions, repository improvement, and production-readiness review. It works with Codex and Claude Code without a backend, database, account, or separate AI runtime.
+**Evidence before advice. Practical project planning, architecture decisions, repository improvement, and production-readiness review for AI coding agents.**
 
 [![CLI CI](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml/badge.svg)](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml)
+[![npm version](https://img.shields.io/npm/v/product-helper-cli?logo=npm)](https://www.npmjs.com/package/product-helper-cli)
+[![npm downloads](https://img.shields.io/npm/dm/product-helper-cli?logo=npm)](https://www.npmjs.com/package/product-helper-cli)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Abhiraj-creator/dev-helper)
 
-## What it helps with
+Product Helper is a portable Agent Skill. It gives Codex, Claude Code, and other compatible harnesses a repeatable workflow for making grounded engineering decisions—without a backend, database, account, telemetry, or separate AI orchestration layer.
 
-- **Pre-build:** turn an idea into a feasible scope, stack direction, architecture outline, and roadmap.
-- **Mid-build:** inspect an existing repository and recommend the smallest justified changes.
-- **Post-build:** review launch readiness with prioritized, file-grounded findings.
-- **Decision:** compare a technology, vendor, or architecture against real constraints.
+```text
+Idea or decision ──> evidence and constraints ──> smallest justified next step
+Existing repository ─> inspect what is real ────> change, keep, or defer
+Ready to ship ──────> risks and readiness gaps ─> prioritized hardening plan
+```
 
-The skill is read-only by design: it advises and documents decisions, while the host agent remains responsible for execution and authorization.
+## Contents
 
-## Install the skill manually
+- [Why Product Helper](#why-product-helper)
+- [Use it when](#use-it-when)
+- [Quick start](#quick-start)
+- [What the workflow does](#what-the-workflow-does)
+- [Supported agents and paths](#supported-agents-and-paths)
+- [CLI commands](#cli-commands)
+- [Safety and ownership](#safety-and-ownership)
+- [How it reasons](#how-it-reasons)
+- [Source of truth](#source-of-truth)
+- [Repository layout](#repository-layout)
+- [Development and verification](#development-and-verification)
+- [Limitations](#limitations)
 
-For Codex, copy `skills/product-helper/` to `.agents/skills/product-helper/` for one project or `~/.codex/skills/product-helper/` for user-wide use.
+## Why Product Helper
 
-For Claude Code, copy the same folder to `.claude/skills/product-helper/` for one project or `~/.claude/skills/product-helper/` for user-wide use.
+Most project advice fails before implementation because it starts with a fashionable stack or an imagined architecture. Product Helper starts with the actual problem, constraints, repository evidence, trade-offs, and failure conditions.
 
-Then invoke it from the agent:
+It helps an agent answer:
+
+- What is the smallest credible thing to build?
+- Which architecture fits the real constraints?
+- What should be changed, preserved, or deferred in an existing repository?
+- Which risks matter before launch?
+- When does a recommendation stop being the right one?
+
+It is advisory by design. The host agent remains responsible for execution, edits, credentials, deployment, and destructive actions.
+
+## Use it when
+
+- You have a rough idea and need a feasible build direction.
+- You are choosing between stacks, vendors, databases, hosting options, or architectures.
+- An existing repository is becoming difficult to change and you need course correction.
+- You want a file-grounded review before shipping.
+- You want the agent to explain what not to build yet.
+
+## Quick start
+
+### Install from npm
+
+The CLI is published as [`product-helper-cli`](https://www.npmjs.com/package/product-helper-cli). With Node.js 20 or later, it installs the canonical skill from the immutable GitHub release tag:
+
+```sh
+npx product-helper-cli install
+```
+
+Choose non-interactive options when you already know the target:
+
+```sh
+npx product-helper-cli install --agent codex --global
+npx product-helper-cli install --agent claude --local
+npx product-helper-cli install --agent all --global
+```
+
+Then start a supported agent and invoke the skill:
 
 ```text
 $product-helper Review my project before launch.
 ```
 
-## Install with the CLI
+Restart or refresh the host after installation if it does not discover the skill immediately. Product Helper can also activate from a suitable planning, architecture, repository-improvement, or launch-readiness request.
 
-Once the package is published to npm, the Milestone 2 CLI installs and manages the same canonical skill for both supported agents:
+### Install manually
 
-```sh
-npx product-helper-cli install
-npx product-helper-cli install --agent codex --global
-npx product-helper-cli install --agent claude --local
+Copy the canonical `skills/product-helper/` directory into the location your agent scans. No CLI is required:
+
+```text
+Codex project:        .agents/skills/product-helper/
+Codex global:         ~/.codex/skills/product-helper/
+Claude project:       .claude/skills/product-helper/
+Claude global:        ~/.claude/skills/product-helper/
 ```
 
-Manage an existing installation:
+## What the workflow does
 
-```sh
-npx product-helper-cli update --all
-npx product-helper-cli info
-npx product-helper-cli info --json
-npx product-helper-cli uninstall --agent codex
-```
+### Pre-build
 
-| Agent | Global | Project-level |
+Turns an idea into a feasible scope, constraints, stack direction, architecture outline, roadmap, and material risks.
+
+### Mid-build
+
+Inspects the existing repository before recommending changes. It prioritizes the smallest justified correction instead of prescribing a rewrite, service split, cache, queue, or framework without evidence.
+
+### Post-build
+
+Reviews launch readiness against the intended users, data, traffic, deployment, security, operations, and recovery expectations.
+
+### Decision
+
+Compares realistic options narrowly, including trade-offs, cost, maintenance, lock-in, failure modes, and conditions that would reverse the recommendation.
+
+### Architecture review
+
+Assesses a real architecture from inspected evidence, or clearly labels a design-only review as provisional.
+
+## How it reasons
+
+For material claims, Product Helper distinguishes **verified** external facts, **observed** repository evidence, **inferred** conclusions, and **assumptions**. It loads its planning, research, architecture, technology-selection, repository-analysis, feasibility, security, and output-contract references only when a request needs them.
+
+For substantial work, it can produce a plan, comparison, architecture outline, roadmap, first implementation slice, or risk register. It does not generate a full document set merely because templates exist.
+
+## Supported agents and paths
+
+| Agent | Global skill path | Project skill path |
 | --- | --- | --- |
 | Codex | `~/.codex/skills/product-helper/` | `.agents/skills/product-helper/` |
 | Claude Code | `~/.claude/skills/product-helper/` | `.claude/skills/product-helper/` |
 
-The CLI downloads an immutable GitHub release, validates `SKILL.md` and local references, stages changes before replacing files, records ownership metadata, preserves unrelated files, and removes only files it manages.
+The skill folder is portable. Host-specific metadata is additive and does not change the workflow in `SKILL.md`.
 
-The current CLI release is `0.1.3`, distributed from the repository’s `v0.1.3` tag. See the [CLI guide](packages/cli/README.md) for troubleshooting and release-source details.
+## CLI commands
 
-## Develop the CLI locally
+```sh
+# Interactive install
+npx product-helper-cli install
+
+# Explicit install targets
+npx product-helper-cli install --agent codex --global
+npx product-helper-cli install --agent claude --local
+npx product-helper-cli install --agent all --global
+
+# Safe management
+npx product-helper-cli update --all
+npx product-helper-cli info
+npx product-helper-cli info --json
+npx product-helper-cli uninstall --agent codex
+npx product-helper-cli uninstall --agent codex --yes
+```
+
+The current CLI release is `0.1.3`. See the [CLI guide and troubleshooting notes](packages/cli/README.md) for release-source overrides, permissions, existing installations, and migration from the previous name.
+
+## Safety and ownership
+
+The installer:
+
+- Downloads only from an immutable GitHub tag by default.
+- Validates `SKILL.md`, frontmatter, local references, directory structure, and symlink safety.
+- Stages files before replacing a managed installation.
+- Writes `.product-helper-install.json` ownership metadata.
+- Preserves files outside its managed file list.
+- Refuses to overwrite an unmanaged directory.
+- Requires confirmation before destructive uninstall operations.
+- Removes only files recorded as managed by Product Helper.
+
+Existing `project-pilot` installations are not deleted automatically after the rename. Remove those old directories separately only after confirming they are no longer needed.
+
+`update`, `uninstall`, and `info --json` act only on directories carrying Product Helper ownership metadata. Use `--yes` only when non-interactive automation is intended.
+
+## Source of truth
+
+The runtime workflow lives in [`skills/product-helper/SKILL.md`](skills/product-helper/SKILL.md). The CLI only downloads, validates, installs, updates, reports, and removes that skill; it does not duplicate the skill’s reasoning or add an AI backend. You can therefore use the skill by copying its folder directly when npm is not appropriate.
+
+## Repository layout
+
+```text
+skills/product-helper/       portable runtime skill and references
+packages/cli/                TypeScript installer and manager
+examples/                    user-facing workflow examples
+tests/                       behavior and compatibility checks
+evals/                       evaluation cases, rubric, and portability checks
+.github/workflows/cli.yml    Windows, macOS, and Linux CI
+```
+
+## Development and verification
 
 ```sh
 cd packages/cli
-npm install
-npm run check
-npm test
-npm run build
-node dist/index.js --help
+npm ci
+npm run check       # TypeScript validation
+npm test            # Vitest unit tests
+npm run build       # Bundle the executable
+npm pack --dry-run  # Inspect published contents
 ```
 
-The CLI package is separate from the skill source. Changes to `packages/cli` must not duplicate or modify `skills/product-helper`.
+The CLI package publishes only `README.md`, `dist/`, and `package.json`. Tests and source files stay in the repository.
 
-## Repository map
-
-```text
-skills/product-helper/       canonical portable skill
-packages/cli/               TypeScript installer and manager
-examples/                   user-facing workflow examples
-tests/                      skill behavior and compatibility tests
-evals/                      evaluation cases and rubric
-```
+GitHub Actions runs the CLI checks on Ubuntu, macOS, and Windows. Local verification here is performed on Windows; cross-platform claims are based on the CI matrix rather than pretending a Windows machine is macOS or Linux.
 
 ## Documentation
 
@@ -89,7 +207,9 @@ evals/                      evaluation cases and rubric
 - [Evaluation rubric](evals/evaluation-rubric.md)
 - [Portability checklist](evals/portability.md)
 - [Milestone 1 status](MILESTONE1_STATUS.md)
+- [Product specification](PRODUCT_SPEC.md)
+- [Architecture decisions](ARCHITECTURE_DECISIONS.md)
 
 ## Limitations
 
-product-helper provides advice; it does not guarantee correctness, certify security or compliance, install dependencies, deploy applications, or modify source code without separate authorization. Research, pricing, repository access, and runtime behavior depend on the host agent’s available capabilities.
+Product Helper does not guarantee correctness, certify security or compliance, install application dependencies, deploy systems, or modify source code without separate authorization. Research quality, pricing, repository access, and runtime behavior depend on the host agent’s available capabilities.
