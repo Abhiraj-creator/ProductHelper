@@ -1,6 +1,6 @@
-# ProjectPilot
+# product-helper
 
-ProjectPilot is a portable Agent Skill for evidence-based project planning, architecture decisions, repository improvement, and production-readiness review. It works with Codex and Claude Code without a backend, database, account, or separate AI runtime.
+product-helper is a portable Agent Skill for evidence-based project planning, architecture decisions, repository improvement, and production-readiness review. It works with Codex and Claude Code without a backend, database, account, or separate AI runtime.
 
 [![CLI CI](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml/badge.svg)](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml)
 
@@ -15,14 +15,14 @@ The skill is read-only by design: it advises and documents decisions, while the 
 
 ## Install the skill manually
 
-For Codex, copy `skills/project-pilot/` to `.agents/skills/project-pilot/` for one project or `~/.codex/skills/project-pilot/` for user-wide use.
+For Codex, copy `skills/product-helper/` to `.agents/skills/product-helper/` for one project or `~/.codex/skills/product-helper/` for user-wide use.
 
-For Claude Code, copy the same folder to `.claude/skills/project-pilot/` for one project or `~/.claude/skills/project-pilot/` for user-wide use.
+For Claude Code, copy the same folder to `.claude/skills/product-helper/` for one project or `~/.claude/skills/product-helper/` for user-wide use.
 
 Then invoke it from the agent:
 
 ```text
-$project-pilot Review my project before launch.
+$product-helper Review my project before launch.
 ```
 
 ## Install with the CLI
@@ -30,28 +30,28 @@ $project-pilot Review my project before launch.
 Once the package is published to npm, the Milestone 2 CLI installs and manages the same canonical skill for both supported agents:
 
 ```sh
-npx projectpilot install
-npx projectpilot install --agent codex --global
-npx projectpilot install --agent claude --local
+npx product-helper install
+npx product-helper install --agent codex --global
+npx product-helper install --agent claude --local
 ```
 
 Manage an existing installation:
 
 ```sh
-npx projectpilot update --all
-npx projectpilot info
-npx projectpilot info --json
-npx projectpilot uninstall --agent codex
+npx product-helper update --all
+npx product-helper info
+npx product-helper info --json
+npx product-helper uninstall --agent codex
 ```
 
 | Agent | Global | Project-level |
 | --- | --- | --- |
-| Codex | `~/.codex/skills/project-pilot/` | `.agents/skills/project-pilot/` |
-| Claude Code | `~/.claude/skills/project-pilot/` | `.claude/skills/project-pilot/` |
+| Codex | `~/.codex/skills/product-helper/` | `.agents/skills/product-helper/` |
+| Claude Code | `~/.claude/skills/product-helper/` | `.claude/skills/product-helper/` |
 
 The CLI downloads an immutable GitHub release, validates `SKILL.md` and local references, stages changes before replacing files, records ownership metadata, preserves unrelated files, and removes only files it manages.
 
-The current CLI release is `0.1.1`, distributed from the repository’s `v0.1.1` tag. See the [CLI guide](packages/cli/README.md) for troubleshooting and release-source details.
+The current CLI release is `0.1.2`, distributed from the repository’s `v0.1.2` tag. See the [CLI guide](packages/cli/README.md) for troubleshooting and release-source details.
 
 ## Develop the CLI locally
 
@@ -64,12 +64,12 @@ npm run build
 node dist/index.js --help
 ```
 
-The CLI package is separate from the skill source. Changes to `packages/cli` must not duplicate or modify `skills/project-pilot`.
+The CLI package is separate from the skill source. Changes to `packages/cli` must not duplicate or modify `skills/product-helper`.
 
 ## Repository map
 
 ```text
-skills/project-pilot/       canonical portable skill
+skills/product-helper/       canonical portable skill
 packages/cli/               TypeScript installer and manager
 examples/                   user-facing workflow examples
 tests/                      skill behavior and compatibility tests
@@ -92,4 +92,4 @@ evals/                      evaluation cases and rubric
 
 ## Limitations
 
-ProjectPilot provides advice; it does not guarantee correctness, certify security or compliance, install dependencies, deploy applications, or modify source code without separate authorization. Research, pricing, repository access, and runtime behavior depend on the host agent’s available capabilities.
+product-helper provides advice; it does not guarantee correctness, certify security or compliance, install dependencies, deploy applications, or modify source code without separate authorization. Research, pricing, repository access, and runtime behavior depend on the host agent’s available capabilities.

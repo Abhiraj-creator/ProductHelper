@@ -1,4 +1,4 @@
-# ProjectPilot evaluation cases
+# product-helper evaluation cases
 
 Run the same cases in Codex and Claude Code. Record host, date, skill revision, prompt, response, score, and any failure. Do not treat these cases as proof until they have been run.
 

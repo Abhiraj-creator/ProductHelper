@@ -1,4 +1,4 @@
-# ProjectPilot Architecture Decisions
+# product-helper Architecture Decisions
 
 ## ADR-001: Use the Agent Skills format
 
@@ -20,7 +20,7 @@
 
 **Status:** Accepted
 
-**Decision:** ProjectPilot supplies methodology, boundaries, and output contracts rather than an AI backend.
+**Decision:** product-helper supplies methodology, boundaries, and output contracts rather than an AI backend.
 
 **Reason:** Avoid duplicating capabilities supplied by the host.
 
@@ -68,7 +68,7 @@
 
 **Status:** Accepted
 
-**Decision:** ProjectPilot may inspect and recommend, but execution, edits, installation, deployment, and destructive actions require separate authorization.
+**Decision:** product-helper may inspect and recommend, but execution, edits, installation, deployment, and destructive actions require separate authorization.
 
 **Reason:** Advice must not silently mutate projects or cross permission boundaries.
 

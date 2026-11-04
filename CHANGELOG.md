@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 — 2026-11-04
+
+- Renamed the product, skill, CLI, and npm package to Product Helper.
+- Moved the installed skill path to `product-helper`.
+
 ## 0.1.1 — 2026-11-04
 
 - Fixed release skill path resolution for the repository layout.
@@ -10,5 +15,5 @@
 
 ## 0.1.0
 
-- Added the ProjectPilot CLI installer for Codex and Claude Code.
+- Added the product-helper CLI installer for Codex and Claude Code.
 - Added global and project-level installation, update, uninstall, and info commands.

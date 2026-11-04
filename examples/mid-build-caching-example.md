@@ -6,7 +6,7 @@ This is an illustrative output shape. File paths and observations below are fict
 
 > Our Express API feels slow. Add Redis caching for product searches.
 
-## Expected ProjectPilot approach
+## Expected product-helper approach
 
 ### Inspection scope
 

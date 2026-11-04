@@ -4,13 +4,13 @@ This checklist distinguishes structural portability from behavioral parity.
 
 ## Codex
 
-- Install the skill under `.agents/skills/project-pilot/` for a project or `$USERPROFILE/.agents/skills/project-pilot/` for user-wide use.
-- Test `$project-pilot` explicitly and test one prompt for implicit activation.
+- Install the skill under `.agents/skills/product-helper/` for a project or `$USERPROFILE/.agents/skills/product-helper/` for user-wide use.
+- Test `$product-helper` explicitly and test one prompt for implicit activation.
 - Restart or refresh the host if updated metadata is not visible.
 
 ## Claude Code
 
-- Copy the same `skills/project-pilot/` folder under the project's `.claude/skills/` or the user's Claude skills directory.
+- Copy the same `skills/product-helper/` folder under the project's `.claude/skills/` or the user's Claude skills directory.
 - Test explicit and implicit activation in a fresh session.
 
 ## Cross-host checks

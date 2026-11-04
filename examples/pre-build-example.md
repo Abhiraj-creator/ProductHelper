@@ -6,7 +6,7 @@ This is an illustrative output shape, not verified research or a prescribed stac
 
 > I am a solo Python developer with six weeks and a $20/month budget. I need a scheduling tool for one local clinic: staff-managed appointment slots, patient booking and cancellation, email confirmations, and a simple weekly view. It must run on one server.
 
-## Expected ProjectPilot approach
+## Expected product-helper approach
 
 ### Recommendation
 

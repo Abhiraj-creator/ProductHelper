@@ -1,6 +1,6 @@
 # Phase 5–6 behavioral checks
 
-Run these in a fresh Codex chat with `$project-pilot`. Record the host, skill revision, response, and pass/fail result.
+Run these in a fresh Codex chat with `$product-helper`. Record the host, skill revision, response, and pass/fail result.
 
 ## PP-013: reference routing
 

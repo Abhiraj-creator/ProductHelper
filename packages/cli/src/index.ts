@@ -30,7 +30,7 @@ type Agent = {
 type Metadata = z.infer<typeof metadataSchema>;
 
 const metadataSchema = z.object({
-  name: z.literal("project-pilot"),
+  name: z.literal("product-helper"),
   version: z.string().regex(/^\d+\.\d+\.\d+(?:-[\w.]+)?$/),
   installedAt: z.string().datetime(),
   source: z.literal("github-release"),
@@ -39,27 +39,27 @@ const metadataSchema = z.object({
   managedFiles: z.array(z.string().regex(/^(?!.*(?:^|[\\/])\.\.(?:[\\/]|$)).+$/).refine((file) => !isAbsolute(file))),
 });
 const skillSchema = z.object({
-  name: z.literal("project-pilot"),
+  name: z.literal("product-helper"),
   description: z.string().min(1),
 });
-const skillDirectory = "skills/project-pilot";
-const metadataFile = ".projectpilot-install.json";
+const skillDirectory = "skills/product-helper";
+const metadataFile = ".product-helper-install.json";
 const source =
-  process.env.PROJECTPILOT_REPOSITORY ?? "github:Abhiraj-creator/dev-helper#v0.1.1";
+  process.env.PRODUCT_HELPER_REPOSITORY ?? "github:Abhiraj-creator/dev-helper#v0.1.2";
 
 const agents: Record<AgentId, Agent> = {
   codex: {
     id: "codex",
     name: "Codex",
-    global: () => join(homedir(), ".codex", "skills", "project-pilot"),
-    local: (root) => join(root, ".agents", "skills", "project-pilot"),
+    global: () => join(homedir(), ".codex", "skills", "product-helper"),
+    local: (root) => join(root, ".agents", "skills", "product-helper"),
     detect: async () => exists(join(homedir(), ".codex")),
   },
   claude: {
     id: "claude",
     name: "Claude Code",
-    global: () => join(homedir(), ".claude", "skills", "project-pilot"),
-    local: (root) => join(root, ".claude", "skills", "project-pilot"),
+    global: () => join(homedir(), ".claude", "skills", "product-helper"),
+    local: (root) => join(root, ".claude", "skills", "product-helper"),
     detect: async () => exists(join(homedir(), ".claude")),
   },
 };
@@ -140,13 +140,13 @@ async function removeEmptyDirectories(dir: string): Promise<void> {
     }
 }
 async function download(): Promise<{ dir: string; version: string }> {
-  const root = await mkdtemp(join(tmpdir(), "projectpilot-"));
+  const root = await mkdtemp(join(tmpdir(), "product-helper-"));
   try {
     await downloadTemplate(source, { dir: root, force: true });
     const dir = join(root, skillDirectory);
     await validate(dir);
     const version =
-      process.env.PROJECTPILOT_VERSION ??
+      process.env.PRODUCT_HELPER_VERSION ??
       source.match(/#v?(\d+\.\d+\.\d+)/)?.[1];
     if (!version)
       throw new Error(
@@ -169,11 +169,11 @@ async function installOne(
   const existing = await readMetadata(target);
   if ((await exists(target)) && !existing)
     throw new Error(
-      `${target} exists but is not a ProjectPilot-managed installation; it was left unchanged.`,
+      `${target} exists but is not a Product Helper-managed installation; it was left unchanged.`,
     );
-  if (existing && !replace) throw new Error(`${agents[agent].name} already has ProjectPilot at ${target}. Use update or confirm replacement.`);
-  const stage = `${target}.projectpilot-stage`;
-  const backup = `${target}.projectpilot-backup`;
+  if (existing && !replace) throw new Error(`${agents[agent].name} already has Product Helper at ${target}. Use update or confirm replacement.`);
+  const stage = `${target}.product-helper-stage`;
+  const backup = `${target}.product-helper-backup`;
   await mkdir(dirname(stage), { recursive: true });
   await rm(stage, { recursive: true, force: true });
   if (existing) {
@@ -186,7 +186,7 @@ async function installOne(
     join(stage, metadataFile),
     JSON.stringify(
       {
-        name: "project-pilot",
+        name: "product-helper",
         version: incoming.version,
         installedAt: new Date().toISOString(),
         source: "github-release",
@@ -223,7 +223,7 @@ async function chooseAgent() {
     )
   ).filter((id): id is AgentId => Boolean(id));
   const answer = await select({
-    message: "Which coding agent should receive ProjectPilot?",
+    message: "Which coding agent should receive Product Helper?",
     options: [
       { value: "codex", label: "Codex" },
       { value: "claude", label: "Claude Code" },
@@ -236,7 +236,7 @@ async function chooseAgent() {
 }
 async function chooseScope() {
   const answer = await select({
-    message: "Where should ProjectPilot be installed?",
+    message: "Where should Product Helper be installed?",
     options: [
       { value: "global", label: "Global" },
       { value: "local", label: "Current project" },
@@ -266,7 +266,7 @@ async function install(options: {
       const target = pathFor(agent, scope, root);
       if (await exists(target)) {
         const yes = await confirm({
-          message: `${target} exists. Replace its managed ProjectPilot files?`,
+          message: `${target} exists. Replace its managed Product Helper files?`,
           initialValue: false,
         });
         if (isCancel(yes) || !yes) continue;
@@ -319,7 +319,7 @@ async function uninstall(options: {
       const approved =
         options.yes ||
         (await confirm({
-          message: `Remove ProjectPilot from ${target}?`,
+          message: `Remove Product Helper from ${target}?`,
           initialValue: false,
         }));
       if (isCancel(approved) || !approved) continue;
@@ -327,7 +327,7 @@ async function uninstall(options: {
       await rm(join(target, metadataFile), { force: true });
       await removeEmptyDirectories(target);
       if ((await readdir(target)).length === 0) await rm(target, { recursive: true, force: true });
-      console.log(`Removed ProjectPilot-managed files from ${target}.`);
+      console.log(`Removed Product Helper-managed files from ${target}.`);
     }
 }
 async function info(json: boolean) {
@@ -345,7 +345,7 @@ async function info(json: boolean) {
     }
   if (json)
     console.log(
-      JSON.stringify({ cliVersion: "0.1.1", installations }, null, 2),
+      JSON.stringify({ cliVersion: "0.1.2", installations }, null, 2),
     );
   else
     for (const item of installations)
@@ -355,9 +355,9 @@ async function info(json: boolean) {
 }
 
 const program = new Command()
-  .name("projectpilot")
-  .description("Install and manage the ProjectPilot agent skill.")
-  .version("0.1.1");
+  .name("product-helper")
+  .description("Install and manage the Product Helper agent skill.")
+  .version("0.1.2");
 program
   .command("install")
   .option("--agent <agent>", "codex, claude, or all")
@@ -386,7 +386,7 @@ function run<T>(fn: (options: T) => Promise<void>) {
       await fn(options);
     } catch (error) {
       console.error(
-        `ProjectPilot: ${error instanceof Error ? error.message : String(error)}`,
+        `Product Helper: ${error instanceof Error ? error.message : String(error)}`,
       );
       process.exitCode = 1;
     }
