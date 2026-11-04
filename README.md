@@ -30,6 +30,8 @@ Copy the same skill folder into the project's `.claude/skills/project-pilot/` or
 
 From `packages/cli`, run `npm install`, then `npm run build`. The packaged command supports interactive installation or non-interactive forms such as `projectpilot install --agent codex --global`; it also provides `update`, `uninstall`, and `info --json`.
 
+See the [CLI guide](packages/cli/README.md), [installation example](examples/cli-install.md), and [troubleshooting section](packages/cli/README.md#troubleshooting) for paths, release behavior, and common failures.
+
 ## Examples and tests
 
 - [Pre-build example](examples/pre-build-example.md)
@@ -40,6 +42,7 @@ From `packages/cli`, run `npm install`, then `npm run build`. The packaged comma
 - [Evaluation rubric](evals/evaluation-rubric.md)
 - [Portability checklist](evals/portability.md)
 - [Milestone 1 status](MILESTONE1_STATUS.md)
+- [CLI changelog](CHANGELOG.md)
 
 ## Limitations
 
