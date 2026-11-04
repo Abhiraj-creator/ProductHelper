@@ -1,0 +1,351 @@
+:root {
+  --background: #f7f6f2;
+  --surface: #fffefa;
+  --ink: #171716;
+  --muted: #66655f;
+  --line: #d8d7cf;
+  --accent: #136f63;
+  --accent-ink: #f2fffb;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --background: #171a18;
+  --surface: #202421;
+  --ink: #f0f1eb;
+  --muted: #b8bbb3;
+  --line: #3b403b;
+  --accent: #75cdb8;
+  --accent-ink: #effbf5;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+code,
+pre {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+.shell {
+  max-width: 1120px;
+  margin: auto;
+  padding: 0 24px;
+}
+.site-header {
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.brand-mark {
+  color: var(--accent);
+  font-family: monospace;
+  margin-right: 8px;
+}
+.links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 0.92rem;
+}
+.links a:hover {
+  color: var(--accent);
+}
+.github {
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+}
+.menu-button {
+  display: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: inherit;
+  padding: 8px 12px;
+  font: inherit;
+}
+.theme-toggle {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 0;
+  font: inherit;
+}
+.theme-toggle:hover {
+  color: var(--accent);
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  padding: 104px 0 88px;
+  align-items: center;
+}
+.eyebrow,
+.section-label {
+  color: var(--accent);
+  font: 700 0.78rem/1 monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: clamp(3.2rem, 8vw, 6.6rem);
+  line-height: 0.94;
+  letter-spacing: -0.075em;
+  margin: 20px 0;
+  max-width: 740px;
+}
+h2 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin: 14px 0 24px;
+}
+h3 {
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+.lede {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  max-width: 620px;
+  color: var(--muted);
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.button {
+  background: var(--ink);
+  color: var(--surface);
+  padding: 12px 16px;
+  font-weight: 700;
+}
+.button.secondary {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.terminal {
+  background: #1d201e;
+  color: #e8eee9;
+  padding: 24px;
+  border: 1px solid #303630;
+  font: 0.87rem/1.8 monospace;
+  box-shadow: 8px 8px 0 #d7ddd8;
+}
+.terminal .prompt {
+  color: #6ed6b8;
+}
+.terminal .ok {
+  color: #9adfa7;
+}
+.terminal .quiet {
+  color: #a9b1ac;
+}
+.section {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+}
+.split {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 72px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.card {
+  background: var(--background);
+  padding: 26px;
+  min-height: 220px;
+}
+.step {
+  font: 700 0.8rem monospace;
+  color: var(--accent);
+}
+.flow {
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+  display: grid;
+  gap: 20px;
+}
+.flow div {
+  font: 700 1rem monospace;
+}
+.flow div:not(:last-child)::after {
+  content: "↓";
+  display: block;
+  color: var(--accent);
+  margin-top: 12px;
+}
+.install {
+  background: var(--ink);
+  color: var(--accent-ink);
+}
+.install h2,
+.install .section-label {
+  color: inherit;
+}
+.command {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  background: #292d2a;
+  padding: 16px;
+  font-family: monospace;
+  overflow-x: auto;
+}
+.docs-layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 720px);
+  gap: 56px;
+  padding: 58px 0 96px;
+}
+.docs-nav {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  font-size: 0.92rem;
+}
+.docs-nav a {
+  display: block;
+  padding: 7px 0;
+  color: var(--muted);
+}
+.docs-nav a:hover {
+  color: var(--accent);
+}
+.doc {
+  line-height: 1.7;
+}
+.doc h1 {
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+}
+.doc h2 {
+  margin-top: 48px;
+  font-size: 1.8rem;
+}
+.doc pre {
+  overflow-x: auto;
+  background: #212522;
+  color: #e9efeb;
+  padding: 18px;
+}
+.doc li {
+  margin: 8px 0;
+}
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.page {
+  padding: 80px 24px 100px;
+}
+.page > h1 {
+  max-width: 840px;
+}
+.example-list,
+.roadmap {
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+}
+.example,
+.roadmap article {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+.example h2,
+.roadmap h2 {
+  font-size: 1.35rem;
+  margin: 0 0 12px;
+}
+.example pre {
+  white-space: pre-wrap;
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  padding: 14px;
+}
+@media (max-width: 760px) {
+  .menu-button {
+    display: block;
+  }
+  .links {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 16px 24px;
+    background: var(--background);
+    border-bottom: 1px solid var(--line);
+  }
+  .links.open {
+    display: grid;
+  }
+  .github {
+    width: max-content;
+  }
+  .hero,
+  .split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 64px 0;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .docs-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 32px;
+  }
+  .docs-nav {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 16px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+  }
+  .docs-nav a {
+    display: inline-block;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

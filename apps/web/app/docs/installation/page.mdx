@@ -1,0 +1,30 @@
+export const metadata = { title: "Installation" }
+
+# Installation
+
+Product Helper requires Node.js 20 or later for CLI installation. You may also copy the portable skill manually.
+
+## Quick install
+
+```sh
+npx product-helper-cli install
+```
+
+## Explicit targets
+
+```sh
+npx product-helper-cli install --agent codex --global
+npx product-helper-cli install --agent claude --local
+npx product-helper-cli install --agent all --global
+```
+
+## Manual installation
+
+```text
+Codex project:  .agents/skills/product-helper/
+Codex global:   ~/.codex/skills/product-helper/
+Claude project: .claude/skills/product-helper/
+Claude global:  ~/.claude/skills/product-helper/
+```
+
+Restart or refresh the host agent if it does not discover the skill immediately.

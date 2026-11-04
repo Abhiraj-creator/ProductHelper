@@ -1,0 +1,21 @@
+export const metadata = { title: "CLI reference" }
+
+# CLI reference
+
+The CLI installs and manages the portable Product Helper skill. It does not run an AI service.
+
+## Commands
+
+```sh
+npx product-helper-cli install
+npx product-helper-cli update --all
+npx product-helper-cli info
+npx product-helper-cli info --json
+npx product-helper-cli uninstall --agent codex --yes
+```
+
+`update`, `uninstall`, and `info --json` operate only on directories containing Product Helper ownership metadata. Uninstall asks for confirmation unless `--yes` is provided for automation.
+
+## Safety
+
+The installer downloads an immutable release tag, validates the skill, stages files before replacement, and preserves files outside the managed file list.
