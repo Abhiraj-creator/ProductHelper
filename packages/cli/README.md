@@ -1,6 +1,6 @@
 # ProjectPilot CLI
 
-Install the ProjectPilot skill for Codex or Claude Code:
+After publishing the package to npm, install the ProjectPilot skill for Codex or Claude Code:
 
 ```sh
 npx projectpilot install
