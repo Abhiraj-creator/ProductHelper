@@ -1,6 +1,6 @@
 # Product Helper
 
-<table align="center"><tr><td bgcolor="#f7f6f2" align="center"><img src="https://raw.githubusercontent.com/Abhiraj-creator/ProductHelper/main/public/producthelper-logo-mono-light.svg" alt="Product Helper" width="480"></td></tr></table>
+<table align="center"><tr><td bgcolor="#f9f7f1" align="center"><img src="https://raw.githubusercontent.com/Abhiraj-creator/ProductHelper/main/public/producthelper-logo-mono-light.svg" alt="Product Helper" width="480"></td></tr></table>
 
 <p align="center"><strong>Evidence before advice.</strong><br>Plan a project, choose an architecture, improve a repository, or check launch readiness—with evidence and clear trade-offs.</p>
 
