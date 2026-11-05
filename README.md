@@ -1,6 +1,6 @@
 # Product Helper
 
-![Product Helper](public/producthelper-logo-mono-light.svg)
+<p align="center"><img src="https://raw.githubusercontent.com/Abhiraj-creator/dev-helper/main/public/producthelper-logo-mono-light.svg" alt="Product Helper" width="560" style="background-color: #fff; padding: 16px; border-radius: 8px;"></p>
 
 **Evidence before advice. Practical project planning, architecture decisions, repository improvement, and production-readiness review for AI coding agents.**
 
