@@ -1,15 +1,29 @@
 # Product Helper
 
-<p align="center"><img src="https://raw.githubusercontent.com/Abhiraj-creator/dev-helper/main/public/producthelper-logo-mono-light.svg" alt="Product Helper" width="560" style="background-color: #fff; padding: 16px; border-radius: 8px;"></p>
+<table align="center"><tr><td bgcolor="#f7f6f2" align="center"><img src="https://raw.githubusercontent.com/Abhiraj-creator/ProductHelper/main/public/producthelper-logo-mono-light.svg" alt="Product Helper" width="480"></td></tr></table>
 
-**Evidence before advice. Practical project planning, architecture decisions, repository improvement, and production-readiness review for AI coding agents.**
+<p align="center"><strong>Evidence before advice.</strong><br>Plan a project, choose an architecture, improve a repository, or check launch readiness—with evidence and clear trade-offs.</p>
 
-[![CLI CI](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml/badge.svg)](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml)
+[![CLI CI](https://github.com/Abhiraj-creator/ProductHelper/actions/workflows/cli.yml/badge.svg)](https://github.com/Abhiraj-creator/ProductHelper/actions/workflows/cli.yml)
 [![npm version](https://img.shields.io/npm/v/product-helper-cli?logo=npm)](https://www.npmjs.com/package/product-helper-cli)
 [![npm downloads](https://img.shields.io/npm/dm/product-helper-cli?logo=npm)](https://www.npmjs.com/package/product-helper-cli)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Abhiraj-creator/dev-helper)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Abhiraj-creator/ProductHelper)
 
-Product Helper is a portable Agent Skill. It gives Codex, Claude Code, and other compatible harnesses a repeatable workflow for making grounded engineering decisions—without a backend, database, account, telemetry, or separate AI orchestration layer.
+<p align="center"><a href="https://product-helper.vercel.app">Website &amp; docs</a> · <a href="https://www.npmjs.com/package/product-helper-cli">CLI on npm</a> · <a href="packages/cli/README.md">CLI guide</a></p>
+
+Product Helper is an open-source, portable Agent Skill for Codex and Claude Code. It gives your coding agent a practical process for making grounded engineering decisions. The companion CLI installs and manages the skill; no Product Helper account, backend, or telemetry is involved.
+
+| Plan | Improve | Review |
+| --- | --- | --- |
+| Shape an idea into feasible scope, architecture, and milestones. | Inspect an existing repository before proposing changes. | Find launch risks and prioritize readiness work. |
+
+**Quick start** · Requires Node.js 20 or later.
+
+```sh
+npx product-helper-cli install
+```
+
+Then ask your agent to plan a project, assess an architecture, improve a repository, or review launch readiness. See [installation options](#quick-start) and [supported agents](#supported-agents-and-paths).
 
 ```text
 Idea or decision ──> evidence and constraints ──> smallest justified next step

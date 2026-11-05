@@ -1,8 +1,8 @@
 # Product Helper CLI
 
-![Product Helper](https://raw.githubusercontent.com/Abhiraj-creator/dev-helper/main/public/producthelper-logo-mono-light.svg)
+![Product Helper](https://raw.githubusercontent.com/Abhiraj-creator/ProductHelper/main/public/producthelper-logo-mono-light.svg)
 
-Install and manage the [Product Helper](https://github.com/Abhiraj-creator/dev-helper) Agent Skill for Codex or Claude Code. Product Helper provides evidence-based planning, architecture decisions, repository-improvement advice, and production-readiness reviews; this package installs the portable skill and does not run an AI service or collect project data.
+Install and manage the [Product Helper](https://github.com/Abhiraj-creator/ProductHelper) Agent Skill for Codex or Claude Code. Product Helper provides evidence-based planning, architecture decisions, repository-improvement advice, and production-readiness reviews; this package installs the portable skill and does not run an AI service or collect project data.
 
 Requires Node.js 20 or later.
 
@@ -63,4 +63,4 @@ The release source defaults to the product-helper repository's immutable `v0.1.3
 
 Product Helper uses new `product-helper` paths and metadata. Existing `project-pilot` installations are not removed automatically; remove those old directories separately only after confirming they are no longer needed.
 
-For the workflow, examples, and development instructions, see the [repository README](https://github.com/Abhiraj-creator/dev-helper#readme).
+For the workflow, examples, and development instructions, see the [repository README](https://github.com/Abhiraj-creator/ProductHelper#readme).

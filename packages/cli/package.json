@@ -16,13 +16,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Abhiraj-creator/dev-helper.git",
+    "url": "git+https://github.com/Abhiraj-creator/ProductHelper.git",
     "directory": "typescript/packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/Abhiraj-creator/dev-helper/issues"
+    "url": "https://github.com/Abhiraj-creator/ProductHelper/issues"
   },
-  "homepage": "https://github.com/Abhiraj-creator/dev-helper#readme",
+  "homepage": "https://github.com/Abhiraj-creator/ProductHelper#readme",
   "keywords": [
     "agent-skills",
     "codex",
