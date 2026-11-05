@@ -16,9 +16,6 @@ export const metadata: Metadata = {
     siteName: "Product Helper",
   },
   twitter: { card: "summary" },
-  icons: {
-    icon: "/favicon.svg",
-  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
