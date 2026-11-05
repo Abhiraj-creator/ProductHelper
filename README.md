@@ -1,5 +1,7 @@
 # Product Helper
 
+![Product Helper](public/producthelper-logo-mono-light.svg)
+
 **Evidence before advice. Practical project planning, architecture decisions, repository improvement, and production-readiness review for AI coding agents.**
 
 [![CLI CI](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml/badge.svg)](https://github.com/Abhiraj-creator/dev-helper/actions/workflows/cli.yml)
