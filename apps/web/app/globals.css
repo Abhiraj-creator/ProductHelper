@@ -81,6 +81,11 @@ pre {
   border: 1px solid var(--line);
   padding: 8px 12px;
 }
+.logo-readme{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .menu-button {
   display: none;
   border: 1px solid var(--line);
