@@ -1,6 +1,6 @@
 # Product Helper
 
-<div class='logo-readme'>
+<div class='logo-readme" '>
 <img src="https://raw.githubusercontent.com/Abhiraj-creator/ProductHelper/main/public/producthelper-logo-mono-dark.svg" alt="Product Helper" width="480">
 </div>
 

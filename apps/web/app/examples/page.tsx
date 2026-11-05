@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Examples", description: "Practical Product Helper prompts and outcomes." };
+export const metadata: Metadata = { title: "AI Project Planning and Architecture Examples", description: "See prompts for planning a software project, analyzing a repository, comparing technologies, and reviewing production readiness.", alternates: { canonical: "/examples" } };
 
 const examples = [
   ["New SaaS", "I want to build a SaaS for managing freelance projects.", "Clarify scope, compare viable options, choose a proportionate architecture, and sequence the first build slice."],
