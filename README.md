@@ -9,7 +9,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/product-helper-cli?logo=npm)](https://www.npmjs.com/package/product-helper-cli)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Abhiraj-creator/ProductHelper)
 
-<p align="center"><a href="https://product-helper.vercel.app">Website &amp; docs</a> · <a href="https://www.npmjs.com/package/product-helper-cli">CLI on npm</a> · <a href="packages/cli/README.md">CLI guide</a></p>
+<p align="center"><a href="https://product-helper-pi.vercel.app">Website &amp; docs</a> · <a href="https://www.npmjs.com/package/product-helper-cli">CLI on npm</a> · <a href="packages/cli/README.md">CLI guide</a></p>
 
 Product Helper is an open-source, portable Agent Skill for Codex and Claude Code. It gives your coding agent a practical process for making grounded engineering decisions. The companion CLI installs and manages the skill; no Product Helper account, backend, or telemetry is involved.
 

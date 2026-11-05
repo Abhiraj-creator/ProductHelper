@@ -1,7 +1,7 @@
 {
   "name": "product-helper-cli",
   "version": "0.1.3",
-  "description": "Install and manage the Product Helper agent skill.",
+  "description": "Portable planning and architecture skill for coding agents.",
   "type": "module",
   "bin": {
     "product-helper-cli": "dist/index.js"
@@ -17,7 +17,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Abhiraj-creator/ProductHelper.git",
-    "directory": "typescript/packages/cli"
+    "directory": "packages/cli"
   },
   "bugs": {
     "url": "https://github.com/Abhiraj-creator/ProductHelper/issues"
@@ -25,9 +25,13 @@
   "homepage": "https://github.com/Abhiraj-creator/ProductHelper#readme",
   "keywords": [
     "agent-skills",
+    "ai-agents",
     "codex",
     "claude-code",
-    "product-helper"
+    "product-helper",
+    "project-planning",
+    "software-architecture",
+    "repository-analysis"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --target node20",
